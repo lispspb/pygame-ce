@@ -46,14 +46,13 @@ cd $IMG2
 # The --disable-x-shared flags make it use standard dynamic linking rather than
 # dlopen-ing the library itself. This is important for when auditwheel moves
 # libraries into the wheel.
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-      # linux
-      export SDL_IMAGE_CONFIGURE=
-elif [[ "$OSTYPE" == "darwin"* ]]; then
+if [[ "$OSTYPE" == "darwin"* ]]; then
       # Mac OSX
       # --disable-imageio is so it doesn't use the built in mac image loading.
       #     Since it is not as compatible with some jpg/png files.
       export SDL_IMAGE_CONFIGURE=--disable-imageio
+else
+      export SDL_IMAGE_CONFIGURE=
 fi
 
 # We prefer libpng and libjpeg-turbo over stb-image at the moment
