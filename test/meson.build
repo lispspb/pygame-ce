@@ -58,5 +58,5 @@ test_files = files(
 
 py.install_sources(test_files, subdir: pg / 'tests')
 
-install_subdir('fixtures', install_dir: pg_dir / 'tests')
+install_subdir('fixtures', install_dir: pg_dir / 'tests', install_tag: 'pg-tag')
 subdir('test_utils')
