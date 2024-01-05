@@ -91,13 +91,14 @@ mkdir builddir && cd builddir
 # The SDL2MIXER_DEPS_SHARED flag make it use standard dynamic linking rather than
 # dlopen-ing the library itself. This is important for when auditwheel moves
 # libraries into the wheel.
-# We prefer libflac, mpg123 and ogg-vorbis over SDL vendored implementations
+# We prefer mpg123 and ogg-vorbis over SDL vendored implementations
 # at the moment. This can be changed later if need arises.
+# libflac had link time issues on macs and windows(mingw) so we use drflac.
 # For now, libmodplug is preferred over libxmp (but this may need changing
 # in the future)
 cmake -S .. -B . $PG_BASE_CMAKE_FLAGS \
       -DSDL2MIXER_DEPS_SHARED=0 -DSDL2MIXER_VENDORED=0 \
-      -DSDL2MIXER_FLAC_LIBFLAC=1 -DSDL2MIXER_FLAC_DRFLAC=0 \
+      -DSDL2MIXER_FLAC_LIBFLAC=0 -DSDL2MIXER_FLAC_DRFLAC=1 \
       -DSDL2MIXER_MOD_MODPLUG=1 -DSDL2MIXER_MOD_XMP=0 \
       -DSDL2MIXER_MP3_MPG123=1 -DSDL2MIXER_MP3_DRMP3=0 \
       -DSDL2MIXER_VORBIS=VORBISFILE -DSDL2MIXER_VORBIS_VORBISFILE_SHARED=0 \
