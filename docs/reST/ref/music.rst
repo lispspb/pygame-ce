@@ -166,7 +166,7 @@ For a complete list of supported file formats, see the :mod:`pygame.mixer` doc p
    | :sg:`get_volume() -> value`
 
    Returns the current volume for the mixer. The value will be between ``0.0`` 
-   and ``1.0``.
+   and ``1.0`` (inclusive).
 
    .. ## pygame.mixer.music.get_volume ##
 
